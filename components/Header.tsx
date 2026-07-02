@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
 import { whatsappLink, DEFAULT_WHATSAPP } from "@/lib/whatsapp";
+import TogoFlag from "./TogoFlag";
 
 export default function Header() {
   const { t, lang, toggleLang } = useLanguage();
@@ -15,21 +16,25 @@ export default function Header() {
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
-          <Link href="/#apartments" className="text-sm hover:text-clay transition-colors">
+          <Link href="/#apartments" className="text-sm transition hover:text-clay">
             {t.nav.apartments}
           </Link>
-          <Link href="/#location" className="text-sm hover:text-clay transition-colors">
+          <Link href="/#location" className="text-sm transition hover:text-clay">
             {t.nav.location}
           </Link>
-          <Link href="/#contact" className="text-sm hover:text-clay transition-colors">
+          <Link href="/#contact" className="text-sm transition hover:text-clay">
             {t.nav.contact}
           </Link>
+          <span className="eyebrow flex items-center gap-1.5 text-night/50">
+            <TogoFlag className="h-3 w-4 rounded-[1px]" />
+            Togo
+          </span>
         </nav>
 
         <div className="flex items-center gap-3">
           <button
             onClick={toggleLang}
-            className="focus-ring eyebrow rounded-full border border-night/20 px-3 py-1.5 text-night/80 transition hover:border-night/50"
+            className="focus-ring eyebrow rounded-full border border-night/20 px-3 py-1.5 text-night/80 transition hover:border-clay hover:text-clay"
             aria-label="Changer de langue / Switch language"
           >
             {lang === "fr" ? "FR / EN" : "EN / FR"}

@@ -8,8 +8,8 @@ export default function AmenitiesStrip() {
   const loop = [...items, ...items];
 
   return (
-    <div className="overflow-hidden border-y border-night/10 bg-night py-4">
-      <div className="flex w-max animate-[marquee_28s_linear_infinite] gap-10">
+    <div className="overflow-hidden border-y border-gold/20 bg-night py-4">
+      <div className="flex w-max animate-[marquee_28s_linear_infinite] gap-10 hover:[animation-play-state:paused]">
         {loop.map((item, i) => (
           <span
             key={i}

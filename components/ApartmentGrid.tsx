@@ -5,6 +5,7 @@ import { useLanguage } from "@/lib/i18n";
 import { supabase } from "@/lib/supabaseClient";
 import type { Apartment } from "@/lib/types";
 import ApartmentCard from "./ApartmentCard";
+import Reveal from "./Reveal";
 
 export default function ApartmentGrid() {
   const { t } = useLanguage();
@@ -31,11 +32,13 @@ export default function ApartmentGrid() {
 
   return (
     <section id="apartments" className="mx-auto max-w-6xl px-6 py-20">
-      <p className="eyebrow text-clayDeep">{t.apartments.eyebrow}</p>
-      <h2 className="mt-3 max-w-xl font-display text-3xl font-semibold text-night sm:text-4xl">
-        {t.apartments.title}
-      </h2>
-      <p className="mt-4 max-w-xl text-night/65">{t.apartments.subtitle}</p>
+      <Reveal>
+        <p className="eyebrow text-clayDeep">{t.apartments.eyebrow}</p>
+        <h2 className="mt-3 max-w-xl font-display text-3xl font-semibold text-night sm:text-4xl">
+          {t.apartments.title}
+        </h2>
+        <p className="mt-4 max-w-xl text-night/65">{t.apartments.subtitle}</p>
+      </Reveal>
 
       {loading ? (
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -52,8 +55,10 @@ export default function ApartmentGrid() {
         </p>
       ) : (
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {apartments.map((apt) => (
-            <ApartmentCard key={apt.id} apartment={apt} />
+          {apartments.map((apt, i) => (
+            <Reveal key={apt.id} delay={Math.min(i, 4) * 0.08}>
+              <ApartmentCard apartment={apt} />
+            </Reveal>
           ))}
         </div>
       )}
